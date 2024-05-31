@@ -1,46 +1,36 @@
 package com.example.audit.controllers;
 
-import com.example.audit.Services.UserService;
+import com.example.audit.Repositories.UserRepository;
 import com.example.audit.models.Userr;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @RestController
-@RequestMapping("/Userr")
+@RequestMapping("/user")
+@CrossOrigin(origins = "http://localhost:4200")
 public class UserController {
 
     @Autowired
-    private UserService userService;
+    private UserRepository repo;
+    Userr user;
+    @PostMapping("/login")
+    public ResponseEntity<Userr> loginUser(@RequestBody Userr userData) {
+        System.out.println(userData);
+        System.out.println(userData.getEmail());
+        System.out.println(userData.getId());
 
-    @GetMapping
-    public ResponseEntity <List<Userr>> getAllUsers() {
-        List<Userr> userr = userService.getAllUsers();
-        return ResponseEntity.ok(userr);
-    }
+        Userr user = repo.findByEmail(userData.getEmail());
+        if (user != null && user.getMotdepasse().equals(userData.getMotdepasse())) {
+            return ResponseEntity.ok(user);
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Userr> getUserById(@PathVariable Long id) {
-        Userr userr = userService.getUserById(id);
-        if (userr== null) {
-            return ResponseEntity.notFound().build();
+
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
-        return ResponseEntity.ok(userr);
     }
 
-    @PostMapping
-    public ResponseEntity<Userr> createUser(@RequestBody Userr userr) {
-        Userr savedUser = userService.saveUser(userr);
-        return ResponseEntity.ok(savedUser);
-    }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
-        userService.deleteUser(id);
-        return ResponseEntity.noContent().build();
-    }
 }
-
-

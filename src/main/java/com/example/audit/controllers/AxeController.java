@@ -2,13 +2,16 @@ package com.example.audit.controllers;
 
 import com.example.audit.Services.IAxeService;
 import com.example.audit.models.Axe;
+import com.example.audit.models.Domains;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/axes")
 //@AllArgsConstructor
 public class AxeController {
@@ -21,6 +24,10 @@ public class AxeController {
     public ResponseEntity<List<Axe>> getAllAxes() {
         List<Axe> axes = axeService.getAllAxes();
         return ResponseEntity.ok(axes);
+    }
+    @GetMapping("/domains/{id}")
+    public Set<Domains> getDomainsByAxeId(@PathVariable Long id) {
+        return axeService.getDomainsByAxeId(id);
     }
 
     @GetMapping("/{id}")

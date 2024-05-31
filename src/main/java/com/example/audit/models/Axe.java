@@ -1,5 +1,6 @@
 package com.example.audit.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,7 +27,7 @@ public class Axe implements Serializable {
     private String nom;
     @ManyToMany(cascade = CascadeType.ALL, mappedBy = "axes")
     private List<Mission> missions;
-
+@JsonIgnore
     @OneToMany(cascade =CascadeType.ALL)
     private Set<Domains> Domains;
 

@@ -1,5 +1,6 @@
 package com.example.audit.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
@@ -19,11 +20,14 @@ public class Domains {
     @Setter
     @Getter
     private String nom;
+    @Setter
+    @Getter
+    private Float poid;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "axe_id")
     private Axe axe;
-
+@JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "domains")
     private Set<Criteria> criteria;
 

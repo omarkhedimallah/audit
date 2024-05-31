@@ -23,6 +23,9 @@ public class Userr {
     @Setter
     @Getter
     private String email;
+    @Setter
+    @Getter
+    private String motdepasse;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "Userr")
     private Set <Mission> Mission;
 
