@@ -18,4 +18,5 @@ public interface IAxeService {
     void deleteAxe(Long id);
 
     Set<Domains> getDomainsByAxeId(Long axeId);
+    public List<Axe> getAxesByMissionId(Long missionId);
 }

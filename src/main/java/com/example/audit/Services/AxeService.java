@@ -46,4 +46,8 @@ public class AxeService implements IAxeService {
         }
         return null;
     }
+    @Override
+    public List<Axe> getAxesByMissionId(Long missionId) {
+        return axeRepository.findAxesByMissionId(missionId);
+    }
 }

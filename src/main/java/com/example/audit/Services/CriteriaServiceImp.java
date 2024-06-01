@@ -15,7 +15,7 @@ public interface CriteriaServiceImp {
     default void deleteCriteria(Long id) {
 
     }
-
+    List<Criteria> getCriteriasByDomains(Long idDomains);
 }
 
 

@@ -41,4 +41,10 @@ public class DomainsController {
         domainsService.deleteDomain(id);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/findDomainByAxe/{id}")
+    public ResponseEntity<List<Domains>> getDomainByAxe(@PathVariable Long id) {
+        List<Domains> domains = domainsService.getDomainsByAxeId(id);
+        return ResponseEntity.ok(domains);
+    }
 }

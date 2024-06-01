@@ -41,4 +41,12 @@ public class CriteriaController {
         criteriaService.deleteCriteria(id);
         return ResponseEntity.noContent().build();
     }
+    @GetMapping("/getCriteriaByDomaine/{id}")
+    public ResponseEntity<List<Criteria>> getCriteriasByDomaine(@PathVariable Long id) {
+       List<Criteria> criterias = criteriaService.getCriteriasByDomains(id);
+        if (criterias == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(criterias);
+    }
 }

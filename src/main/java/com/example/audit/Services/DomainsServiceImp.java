@@ -14,4 +14,5 @@ public interface DomainsServiceImp {
     Domains saveDomain(Domains domain);
 
     void deleteDomain(Long id);
+    List<Domains> getDomainsByAxeId(Long idAxe);
 }

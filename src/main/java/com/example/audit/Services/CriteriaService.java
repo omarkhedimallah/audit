@@ -39,7 +39,12 @@ public class CriteriaService implements CriteriaServiceImp {
 
     @Override
     public List<Criteria> getAllCriteria() {
-        return null;
+        return criteriaRepository.findAll();
+
+    }
+    @Override
+    public List<Criteria> getCriteriasByDomains(Long idDomains) {
+        return criteriaRepository.findCriteriaByDomains_Id(idDomains);
 
     }
 

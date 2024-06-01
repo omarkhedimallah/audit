@@ -41,4 +41,5 @@ public class MissionController {
         missionService.deleteMission(id);
         return ResponseEntity.noContent().build();
     }
+
 }

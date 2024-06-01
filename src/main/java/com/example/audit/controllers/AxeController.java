@@ -50,4 +50,10 @@ public class AxeController {
         axeService.deleteAxe(id);
         return ResponseEntity.noContent().build();
     }
+    @GetMapping("/getAxeByMission/{id}")
+    public ResponseEntity<List<Axe>> getAxeByMissionId(@PathVariable Long id) {
+        List<Axe> axes = axeService.getAxesByMissionId(id);
+        return ResponseEntity.ok(axes);
+    }
+
 }

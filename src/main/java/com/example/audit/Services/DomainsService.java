@@ -35,6 +35,10 @@ public class DomainsService implements DomainsServiceImp {
     public void deleteDomain(Long id) {
         domainsRepository.deleteById(id);
     }
+    @Override
+    public List<Domains> getDomainsByAxeId(Long idAxe) {
+        return domainsRepository.findDomainsByAxe_Id(idAxe);
+    }
 
 
 

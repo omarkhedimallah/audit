@@ -25,10 +25,11 @@ public class Axe implements Serializable {
     private Long id;
 
     private String nom;
+    @JsonIgnore
     @ManyToMany(cascade = CascadeType.ALL, mappedBy = "axes")
     private List<Mission> missions;
 @JsonIgnore
-    @OneToMany(cascade =CascadeType.ALL)
+    @OneToMany(cascade =CascadeType.ALL, mappedBy = "axe")
     private Set<Domains> Domains;
 
 

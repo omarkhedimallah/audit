@@ -27,7 +27,7 @@ public class Criteria {
     @JoinColumn(name = "domains_id")
     private Domains domains ;
     @JsonIgnore
-    @OneToMany (cascade =CascadeType.ALL)
+    @OneToMany (cascade =CascadeType.ALL, mappedBy = "criteria")
     private Set<Questions> Questions;
 
     public Criteria()  {}

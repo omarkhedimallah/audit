@@ -34,4 +34,8 @@ public class QuestionsService implements QuestionsServiceImp  {
     public void deleteQuestion(Long id) {
         questionsRepository.deleteById(id);
     }
+    @Override
+    public List<Questions> getQuestionsByCriteria(Long idCriteria) {
+        return questionsRepository.findQuestionsByCriteria_Id(idCriteria);
+    }
 }

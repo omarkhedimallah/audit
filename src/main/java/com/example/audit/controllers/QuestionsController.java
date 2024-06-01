@@ -41,6 +41,14 @@ public class QuestionsController {
         questionsService.deleteQuestion(id);
         return ResponseEntity.noContent().build();
     }
+    @GetMapping("/getQuestionByCriteria/{id}")
+    public ResponseEntity<List<Questions>> getQuestionByCriteria(@PathVariable Long id) {
+        List<Questions> questions = questionsService.getQuestionsByCriteria(id);
+        if (questions == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(questions);
+    }
 }
 
 
